@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Transformer - AI-Powered ATS Optimizer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/analysis.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Resume Transformer</h1>
+            <p class="subtitle">AI-Powered ATS Optimizer | Powered by Claude</p>
+        </header>
+
+        <!-- Main Upload Section -->
+        <div class="upload-section card">
+            <h2>Upload Your Resume & Job Description</h2>
+
+            <!-- Resume Input -->
+            <div class="input-group">
+                <h3>Resume</h3>
+                <div class="toggle-buttons">
+                    <button type="button" class="toggle-btn active" data-mode="file">
+                        Upload File
+                    </button>
+                    <button type="button" class="toggle-btn" data-mode="text">
+                        Paste Text
+                    </button>
+                </div>
+
+                <!-- File Upload Mode -->
+                <div id="file-mode" class="input-mode">
+                    <div class="file-upload">
+                        <input type="file" id="resume-file" accept=".pdf,.docx,.txt">
+                        <label for="resume-file" class="file-label">
+                            <span class="file-icon">📄</span>
+                            <span class="file-text">Choose PDF, DOCX, or TXT file (max 5MB)</span>
+                        </label>
+                        <div id="file-name" class="file-name"></div>
+                    </div>
+                </div>
+
+                <!-- Text Paste Mode -->
+                <div id="text-mode" class="input-mode" style="display:none;">
+                    <textarea
+                        id="resume-text"
+                        placeholder="Paste your resume text here..."
+                        rows="10"></textarea>
+                </div>
+            </div>
+
+            <!-- Job Description Input -->
+            <div class="input-group">
+                <h3>Job Description</h3>
+                <textarea
+                    id="job-description"
+                    placeholder="Paste the job description here..."
+                    rows="10"
+                    required></textarea>
+            </div>
+
+            <!-- Analyze Button -->
+            <button id="analyze-btn" class="btn btn-primary">
+                Analyze Resume
+            </button>
+
+            <!-- Loading Spinner -->
+            <div id="loading" class="loading" style="display:none;">
+                <div class="spinner"></div>
+                <p>Analyzing your resume... This may take 30-60 seconds</p>
+            </div>
+
+            <!-- Error Message -->
+            <div id="error-message" class="error-message" style="display:none;"></div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results-section" class="results-section" style="display:none;">
+            <!-- Executive Summary -->
+            <div class="card">
+                <h2>Executive Summary</h2>
+                <div class="summary-scores">
+                    <div class="score-card">
+                        <div class="score-label">Match Score</div>
+                        <div class="score-value" id="match-score">--</div>
+                        <div class="score-max">/ 100</div>
+                    </div>
+                    <div class="score-card">
+                        <div class="score-label">ATS Score</div>
+                        <div class="score-value" id="ats-score">--</div>
+                        <div class="score-max">/ 100</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Analysis Tabs -->
+            <div class="card">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="step1">
+                        Step 1: Job Analysis
+                    </button>
+                    <button class="tab-btn" data-tab="step2">
+                        Step 2: Gap Analysis
+                    </button>
+                    <button class="tab-btn" data-tab="step3">
+                        Step 3: ATS Scan
+                    </button>
+                    <button class="tab-btn" data-tab="step4">
+                        Step 4: Optimized Resume
+                    </button>
+                </div>
+
+                <!-- Step 1: Job Analysis -->
+                <div id="step1" class="tab-content active">
+                    <h3>Job Requirements Analysis</h3>
+                    <div id="job-analysis-content"></div>
+                </div>
+
+                <!-- Step 2: Gap Analysis -->
+                <div id="step2" class="tab-content">
+                    <h3>Resume Gap Analysis</h3>
+                    <div id="gap-analysis-content"></div>
+                </div>
+
+                <!-- Step 3: ATS Scan -->
+                <div id="step3" class="tab-content">
+                    <h3>ATS Compatibility Scan</h3>
+                    <div id="ats-scan-content"></div>
+                </div>
+
+                <!-- Step 4: Optimized Resume -->
+                <div id="step4" class="tab-content">
+                    <h3>Optimized Resume</h3>
+                    <div id="optimized-resume-content"></div>
+                    <button id="download-btn" class="btn btn-success">
+                        Download Optimized Resume (.docx)
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by Claude Sonnet 4.5 | Resume Transformer &copy; 2026</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript Modules -->
+    <script src="js/app.js"></script>
+    <script src="js/upload-handler.js"></script>
+    <script src="js/api-client.js"></script>
+    <script src="js/analysis-display.js"></script>
+    <script src="js/docx-download.js"></script>
+</body>
+</html>
